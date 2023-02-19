@@ -35,6 +35,6 @@ this.authServ.userSignUpRequest(this.registerUserForm.value).subscribe((data : a
 this.registerUserForm.reset()
   }
   navigatToLoginn(){
-this.roter.navigate(['userAuth/login'])
+this.roter.navigate(['login'])
   }
 }
