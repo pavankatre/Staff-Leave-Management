@@ -1,0 +1,86 @@
+<p>registration works!</p>
+
+
+<div class="grid   justify-content-center">
+    <div class="col-10">
+        <form action="" [formGroup]="registerUserForm" (ngSubmit)="registerUser()"
+            class="col-6 p-0 border-500 hover:border-800 border-3 border-round surface-overlay p-3 m-5">
+            <div class="card">
+                <div class="formgrid grid">
+
+                    <div class="field md:col-6 col-12">
+                        <div class="formgroup-inline">
+                            <div class="field-radiobutton">
+                                <input type="radio" name="userH0odOrStaff" id="Hod" value="HOD"
+                                    formControlName="userH0odOrStaff">
+                                <label for="Hod">HOD</label>
+                            </div>
+                            <div class="field-radiobutton">
+                                <input type="radio" name="userH0odOrStaff" value="Staff" id="staff"
+                                    formControlName="userH0odOrStaff">
+                                <label for="staff">Staff</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="formgrid grid">
+                    <div class="field md:col-6  col-12">
+                        <label for="firstname">First Name <span class="" [ngClass]="{'red-color':!registerUserForm.get('userFirstName').valid && registerUserForm.get('userFirstName').touched}">*</span></label>
+                        <input id="firstname" type="text" formControlName="userFirstName"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field md:col-6 col-12">
+                        <label for="lastname">Last Name <span class="" [ngClass]="{'red-color':!registerUserForm.get('userLastName').valid && registerUserForm.get('userLastName').touched}">*</span></label>
+                        <input id="lastname" type="text" formControlName="userLastName"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field md:col-6 col-12">
+                        <label for="email">Email <span class="" [ngClass]="{'red-color':!registerUserForm.get('userEmail').valid && registerUserForm.get('userEmail').touched}">*</span></label>
+                        <input id="email" type="email" formControlName="userEmail"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field md:col-6 col-12">
+                        <label for="contact">Contact <span class="" [ngClass]="{'red-color':!registerUserForm.get('userContact').valid && registerUserForm.get('userContact').touched}">*</span></label>
+                        <input id="contact" type="text" formControlName="userContact"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field md:col-6 col-12">
+                        <label for="depart">Department <span class="" [ngClass]="{'red-color':!registerUserForm.get('userDep').valid && registerUserForm.get('userDep').touched}">*</span></label>
+                        <select id="depart" formControlName="userDep"
+                            class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary"
+                            style="appearance: auto">
+                            <option>Sales</option>
+                            <!-- <option>California</option>
+                            <option>Florida</option>
+                            <option>Ohio</option>
+                            <option>Washington</option> -->
+                        </select>
+                    </div>
+                </div>
+                <div class="formgrid grid">
+                    <div class="field md:col-6 col-12">
+                        <label for="userName">Username <span class="" [ngClass]="{'red-color':!registerUserForm.get('userName').valid && registerUserForm.get('userName').touched}">*</span></label>
+                        <input id="userName" type="text"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                            formControlName="userName">
+                    </div>
+                    <div class="field md:col-6 col-12">
+                        <label for="userPsw">Password <span class="" [ngClass]="{'red-color':!registerUserForm.get('uPsw').valid && registerUserForm.get('uPsw').touched}">*</span></label>
+                        <input id="userPsw" type="text"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                            formControlName="uPsw">
+                    </div>
+                    <div class="field  col-12">
+                        <button pButton pRipple type="submit" label="Register"
+                            class=" w-full p-button-raised p-button-text  text-white bg-primary-500 border-primary-500 px-3 py-2 text-base border-1 border-solid border-round cursor-pointer transition-all transition-duration-200 hover:bg-primary-600 hover:border-primary-600 active:bg-primary-700 active:border-primary-700"></button>
+                    </div>
+                    <div class="field col-12 text-center">
+                        <small id="username-help" class="">Already Registered ? <a routerLink="userAuth/login"
+                            (click)="navigatToLoginn()"    class="text-primary cursor-pointer">Login </a></small>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

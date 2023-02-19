@@ -1,0 +1,121 @@
+<div class="container" *ngIf="getStaff">
+<div class="grid">
+
+    <div class="col-4 col-offset-8 mt-5"><button type="button" class="btn btn-primary" data-toggle="modal"
+            data-target="#exampleModal">
+            Apply For Leave
+        </button>
+    </div>
+    <div class="col-10 p-4 mt-5">
+        <div class="grid flex  justify-content-around">
+            <h3 class="text-red-500" *ngIf="dataForStaff.length==0">No Leave Appled</h3>
+            <div class="col4">
+                <h2>{{approvedLeave + rejectLeave}}</h2>
+                <h4>Totle Leave</h4>
+            </div>
+            <div class="col4">
+                <h2>{{approvedLeave}}</h2>
+                <h4>Approved</h4>
+            </div>
+            <div class="col4">
+                <h2>{{rejectLeave}}</h2>
+                <h4>Rejected</h4>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-4" *ngFor="let card of dataForStaff" >
+                <p-card >
+                    <ng-template pTemplate="header">
+
+                    </ng-template>
+                    <h4>Leave For {{card.from | date :'mediumDate'}}</h4>
+                        <h4>Number Of Days {{card.numOfDay}}</h4>
+                        <h3>Reson</h3>
+                        <p>{{card.resion}}</p>
+                    <h3>Status</h3>
+                    <p>{{card.leaveStatus}}</p>
+                </p-card>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="grid">
+    <div class="col-8">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" [formGroup]="leaveForm" (ngSubmit)="applyForLeave()">
+                            <div class="grid">
+                                <div class="col-6">
+                                    <div class="field">
+                                        <label for="dateFrom">From</label>
+                                        <input id="dateFrom" type="date"
+                                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                                            formControlName="from">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="field">
+                                        <label for="reson">To</label>
+                                        <input id="reson" type="date"
+                                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                                            formControlName="to">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label for="reson">Reason</label>
+                                    <textarea name="" lable="reson" id="reson" cols="64" rows="10"
+                                        formControlName="resion"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="field  flex justify-content-end">
+                                <button  type="button"  data-dismiss="modal"
+                                    class="btn btn-secondary mr-3">Cancel</button>
+                                <button pButton pRipple type="submit" 
+                                    class=" p-button-raised p-button-text  text-white bg-primary-500 border-primary-500 px-3 py-2 text-base border-1 border-solid border-round cursor-pointer transition-all transition-duration-200 hover:bg-primary-600 hover:border-primary-600 active:bg-primary-700 active:border-primary-700">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="container" *ngIf="getHOD" >
+    <div class="grid">
+        <div class="col-12">
+            <h2>for HOD</h2>
+            <h3 class="text-red-500" *ngIf="allDataForHod.length==0">No Leave Appled</h3>
+            <div class="grid  flex justify-content-center">
+                <div class="lg:col-4  md:col-6 sm:col-12" *ngFor="let data of allDataForHod ">
+                    <p-card [style]="{'margin-bottom': '2em'}">
+                        <ng-template pTemplate="header">
+                        </ng-template>
+                        <h2>{{data.userFirstName}} {{data.userLastName}}</h2>
+                        <h4>Leave For {{data.from | date :'mediumDate'}}</h4>
+                        <h4>Number Of Days {{data.numOfDay}}</h4>
+                        <h3>Reson</h3>
+                        <p>{{data.resion}}</p>
+                        <ng-template pTemplate="footer"  >
+                            <button pButton pRipple type="button" icon="pi pi-check"  (click)="statuForLeave(data,'approve')" label="Approve" class="p-button-raised p-button-success mx-2" *ngIf="data.leaveStatus=='Pending'"></button>
+                            <button pButton pRipple type="button" (click)="statuForLeave(data,'reject')" icon="pi pi-times" label="Rejecte" class="p-button-raised p-button-danger mx-2"*ngIf="data.leaveStatus=='Pending'"></button>
+                            
+                            <h5 class=" w-full text-green-500 text-center" *ngIf="data.leaveStatus=='approve'"  style="font-size: 1rem"> <i class="pi pi-check" ></i>{{data.leaveStatus}}</h5>
+                            <h5 class=" w-full text-red-500 text-center" *ngIf="data.leaveStatus=='reject'"  style="font-size: 1rem" ><i class="pi pi-times" ></i>{{data.leaveStatus}}</h5>
+                        </ng-template>
+                        
+                    </p-card>
+                </div>
+        </div>
+    </div>
+</div>

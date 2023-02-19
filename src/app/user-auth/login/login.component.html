@@ -1,0 +1,38 @@
+<p>login works!</p>
+
+
+
+
+<div class="grid justify-content-center ">
+    <div class="col-6 p-0 border-500 hover:border-800 border-3 border-round surface-overlay  ">
+        <div class="card surface-300 p-3">
+            <form action="" [formGroup]="loginForm" (ngSubmit)="logginUser()">
+                <div class="field">
+                    <label for="firstname1">Username <span class="" [ngClass]="{'red-color':!loginForm.get('userName').valid && loginForm.get('userName').touched}">*</span></label>
+                    <input id="firstname1" type="text"
+                        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                        formControlName="userName"
+                        > 
+                        <!-- <small class="text-color-red"
+                            *ngIf="!loginForm.get('userName').valid && loginForm.get('userName').touched">First
+                            Name Required</small> -->
+                </div>
+                <div class="field">
+                    <label for="lastname1">Password <span class="" [ngClass]="{'red-color':!loginForm.get('uPsw').valid && loginForm.get('uPsw').touched}">*</span></label>
+                    <input id="lastname1" type="text"
+                        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                        formControlName="uPsw">
+                </div>
+
+                <div class="field ">
+                    <button pButton pRipple type="submit" label="Login"
+                        class=" w-full p-button-raised p-button-text  text-white bg-primary-500 border-primary-500 px-3 py-2 text-base border-1 border-solid border-round cursor-pointer transition-all transition-duration-200 hover:bg-primary-600 hover:border-primary-600 active:bg-primary-700 active:border-primary-700"></button>
+                </div>
+                <div class="field ">
+                    <small id="username-help">Not Registered Yet ? <a routerLink="/registration"
+                            class="text-primary">Register </a></small>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
